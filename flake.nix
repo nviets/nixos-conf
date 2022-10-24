@@ -20,7 +20,6 @@
   inputs =                                                                  # All flake references used to build my NixOS setup. These are dependencies.
     {
       nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";                  # Nix Packages
-      nixpkgsLatest.url = "github:nixos/nixpkgs/master";                    # Latest Nix Packages
 
       home-manager = {                                                      # User Package Management
         url = "github:nix-community/home-manager";
@@ -58,7 +57,7 @@
       };
     };
 
-  outputs = inputs @ { self, nixpkgs, nixpkgsLatest, home-manager, darwin, nur, nixgl, doom-emacs, hyprland, ... }:   # Function that tells my flake which to use and what do what to do with the dependencies.
+  outputs = inputs @ { self, nixpkgs, home-manager, darwin, nur, nixgl, doom-emacs, hyprland, ... }:   # Function that tells my flake which to use and what do what to do with the dependencies.
     let                                                                     # Variables that can be used in the config files.
       user = "nathan";
       location = "$HOME/.setup";
@@ -67,7 +66,7 @@
       nixosConfigurations = (                                               # NixOS configurations
         import ./hosts {                                                    # Imports ./hosts/default.nix
           inherit (nixpkgs) lib;
-          inherit inputs nixpkgs nixpkgsLatest home-manager nur user location doom-emacs hyprland;   # Also inherit home-manager so it does not need to be defined here.
+          inherit inputs nixpkgs home-manager nur user location doom-emacs hyprland;   # Also inherit home-manager so it does not need to be defined here.
         }
       );
 

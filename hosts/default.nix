@@ -11,17 +11,12 @@
 #            └─ ./home.nix 
 #
 
-{ lib, inputs, nixpkgs, nixpkgsLatest, home-manager, nur, user, location, doom-emacs, hyprland, ... }:
+{ lib, inputs, nixpkgs, home-manager, nur, user, location, doom-emacs, hyprland, ... }:
 
 let
   system = "x86_64-linux";                                  # System architecture
 
   pkgs = import nixpkgs {
-    inherit system;
-    config.allowUnfree = true;                              # Allow proprietary software
-  };
-
-  pkgsLatest = import nixpkgsLatest {
     inherit system;
     config.allowUnfree = true;                              # Allow proprietary software
   };

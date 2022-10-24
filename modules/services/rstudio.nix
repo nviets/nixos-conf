@@ -1,6 +1,6 @@
-{ config, lib, pkgsLatest, ... }:
+{ config, lib, pkgs, ... }:
 let
-  kernelshap = with pkgsLatest;
+  kernelshap = with pkgs;
     rPackages.buildRPackage {
       name = "kernelshap";
       src = fetchFromGitHub {
@@ -11,7 +11,7 @@ let
       };
       propagatedBuildInputs = with rPackages; [ doRNG foreach MASS ];
     };
-  shapviz = with pkgsLatest;
+  shapviz = with pkgs;
     rPackages.buildRPackage {
       name = "shapviz";
       src = fetchFromGitHub {
@@ -44,7 +44,7 @@ let
   #    propagatedBuildInputs = with rPackages; [ jsonlite ];
   #  };
 in {
-  services.rstudio-server = with pkgsLatest; {
+  services.rstudio-server = with pkgs; {
     enable = true;
     listenAddr = "192.168.0.236";
     package = rstudioServerWrapper.override {
