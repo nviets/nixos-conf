@@ -31,6 +31,7 @@
     #[(import ../../modules/desktop/gnome/default.nix)] ++ # Desktop Environment
     [(import ../../modules/editors/emacs/native.nix)] ++  # Native doom emacs instead of nix-community flake
     (import ../../modules/desktop/virtualisation) ++      # Virtual Machines & VNC
+    (import ../../modules/services/rstudio) ++      # Virtual Machines & VNC
     (import ../../modules/hardware);                      # Hardware devices
 
   boot = {                                      # Boot options
@@ -97,7 +98,7 @@
       discord = super.discord.overrideAttrs (
         _: { src = builtins.fetchTarball {
           url = "https://discord.com/api/download?platform=linux&format=tar.gz"; 
-          sha256 = "1kwqn1xr96kvrlbjd14m304g2finc5f5ljvnklg6fs5k4avrvmn4";
+          sha256 = "1pw9q4290yn62xisbkc7a7ckb1sa5acp91plp2mfpg7gp7v60zvz";
         };}
       );
     })
