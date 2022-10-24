@@ -20,7 +20,7 @@
 #           └─ default.nix
 #
 
-{ pkgs, lib, user, ... }:
+{ pkgs, pkgsLatest, lib, user, ... }:
 
 {
   imports =                                               # For now, if applying to other system, swap files
