@@ -1,6 +1,6 @@
-{ config, lib, nixpkgsLatest, ... }:
+{ config, lib, pkgsLatest, ... }:
 let
-  kernelshap = with nixpkgsLatest;
+  kernelshap = with pkgsLatest;
     rPackages.buildRPackage {
       name = "kernelshap";
       src = fetchFromGitHub {
@@ -11,7 +11,7 @@ let
       };
       propagatedBuildInputs = with rPackages; [ doRNG foreach MASS ];
     };
-  shapviz = with nixpkgsLatest;
+  shapviz = with pkgsLatest;
     rPackages.buildRPackage {
       name = "shapviz";
       src = fetchFromGitHub {
@@ -30,7 +30,7 @@ let
         xgboost
       ];
     };
-  #  catboost = with nixpkgsLatest; rPackages.buildRPackage {
+  #  catboost = with pkgsLatest; rPackages.buildRPackage {
   #    name = "catboost";
   #    src = fetchFromGitHub {
   #      owner = "catboost";
@@ -44,7 +44,7 @@ let
   #    propagatedBuildInputs = with rPackages; [ jsonlite ];
   #  };
 in {
-  services.rstudio-server = with nixpkgsLatest; {
+  services.rstudio-server = with pkgsLatest; {
     enable = true;
     listenAddr = "192.168.0.236";
     package = rstudioServerWrapper.override {

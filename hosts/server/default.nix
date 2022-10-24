@@ -31,7 +31,7 @@
     #[(import ../../modules/desktop/gnome/default.nix)] ++ # Desktop Environment
     [(import ../../modules/editors/emacs/native.nix)] ++  # Native doom emacs instead of nix-community flake
     (import ../../modules/desktop/virtualisation) ++      # Virtual Machines & VNC
-    (import ../../modules/services/rstudio) ++      # Virtual Machines & VNC
+    [(import ../../modules/services/rstudio.nix)] ++      # RStudio Server
     (import ../../modules/hardware);                      # Hardware devices
 
   boot = {                                      # Boot options
