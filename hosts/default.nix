@@ -80,4 +80,24 @@ in
       }
     ];
   };
+
+  server = lib.nixosSystem {                                # Server profile
+    inherit system;
+    specialArgs = { inherit inputs user location; }; # Pass flake variable
+    modules = [                                             # Modules that are used.
+      nur.nixosModules.nur
+      hyprland.nixosModules.default
+      ./server
+      ./configuration.nix
+
+      home-manager.nixosModules.home-manager {              # Home-Manager module that is used.
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+        home-manager.extraSpecialArgs = { inherit user doom-emacs; };  # Pass flake variable
+        home-manager.users.${user} = {
+          imports = [(import ./home.nix)] ++ [(import ./server/home.nix)];
+        };
+      }
+    ];
+  };
 }

@@ -38,13 +38,15 @@
 There are some other desktop environments/window manager. Just link to correct default.nix in ~~/hosts/<host>/default.nix~
 
 * NixOS Installation Guide
-This flake currently has *3* hosts
+This flake currently has *4* hosts
  1. desktop
     - UEFI boot w/ systemd-boot
  2. laptop
     - UEFI boot w/ grub (Dual Boot)
  3. vm
     - Legacy boot w/ grub
+ 4. server
+    - UEFI boot w/ systemd-boot
 
 Flakes can be build with:
 - ~$ sudo nixos-rebuild switch --flake <path>#<hostname>~
