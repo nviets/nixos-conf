@@ -20,18 +20,18 @@
     hostName = "MacBook";
   };
 
-  fonts = {                               # Fonts
-    fontDir.enable = true;
-    fonts = with pkgs; [
-      source-code-pro
-      font-awesome
-      (nerdfonts.override {
-        fonts = [
-          "FiraCode"
-        ];
-      })
-    ];
-  };
+#  fonts = {                               # Fonts
+#    fontDir.enable = true;
+#    fonts = with pkgs; [
+#      source-code-pro
+#      font-awesome
+#      (nerdfonts.override {
+#        fonts = [
+#          "FiraCode"
+#        ];
+#      })
+#    ];
+#  };
 
   environment = {
     shells = with pkgs; [ zsh ];          # Default shell
@@ -144,8 +144,11 @@
 
   homebrew = {                            # Declare Homebrew using Nix-Darwin
     enable = true;
-    autoUpdate = true;                    # Auto update packages
-    cleanup = "zap";                      # Uninstall not listed packages and casks
+    onActivation = {
+      upgrade = true;
+      autoUpdate = true;                    # Auto update packages
+      cleanup = "zap";                      # Uninstall not listed packages and casks
+    };
     brews = [
       "wireguard-tools"
     ];
