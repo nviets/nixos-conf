@@ -42,7 +42,11 @@
     systemPackages = with pkgs; [         # Installed Nix packages
       # Terminal
       git
+      #gotop
+      htop
+      nethack
       ranger
+      tmux
 
       # Doom Emacs
       emacs
