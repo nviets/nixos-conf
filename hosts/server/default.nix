@@ -29,11 +29,11 @@
     #[(import ../../modules/desktop/bspwm/default.nix)] ++   # Window Manager
     #[(import ../../modules/desktop/hyprland/default.nix)] ++ # Window Manager
     #[(import ../../modules/desktop/gnome/default.nix)] ++ # Desktop Environment
-    [(import ../../modules/editors/emacs/native.nix)] ++  # Native doom emacs instead of nix-community flake
-    (import ../../modules/desktop/virtualisation) ++      # Virtual Machines & VNC
-    (import ../../modules/services/rstudio) ++            # RStudio Server
-    [(import ../../modules/services/hass.nix)] ++         # Home Assistant
-    [(import ../../modules/services/gitlab.nix)] ++       # gitlab
+    #[(import ../../modules/editors/emacs/native.nix)] ++  # Native doom emacs instead of nix-community flake
+    #(import ../../modules/desktop/virtualisation) ++      # Virtual Machines & VNC
+    #[(import ../../modules/services/rstudio.nix)] ++            # RStudio Server
+    #[(import ../../modules/services/hass.nix)] ++         # Home Assistant
+    #[(import ../../modules/services/gitlab.nix)] ++       # gitlab
     (import ../../modules/hardware);                      # Hardware devices
 
   boot = {                                      # Boot options
@@ -57,9 +57,17 @@
     };
   };
 
+  networking.hostName = "mini";
+
+  fileSystems = {
+    "/".options = [ "compress=zstd" ];
+    "/home".options = [ "compress=zstd" ];
+    "/nix".options = [ "compress=zstd" "noatime" ];
+  };
+
   environment = {                               # Packages installed system wide
     systemPackages = with pkgs; [               # This is because some options need to be configured.
-      discord
+#      discord
       #plex
       simple-scan
       x11vnc

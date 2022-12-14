@@ -15,6 +15,8 @@
     shell = pkgs.zsh;                     # Default shell
   };
 
+  nixpkgs.config.allowBroken = true;
+
   networking = {
     computerName = "MacBook";             # Host name
     hostName = "MacBook";
@@ -41,11 +43,12 @@
     };
     systemPackages = with pkgs; [         # Installed Nix packages
       # Terminal
+      btop
       git
-      #gotop
       htop
-      nethack
+      node2nix
       ranger
+      skhd
       tmux
 
       # Doom Emacs
