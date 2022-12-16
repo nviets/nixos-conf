@@ -37,8 +37,8 @@
     (import ../../modules/hardware);                      # Hardware devices
 
   boot = {                                      # Boot options
-    supportedFilesystems = [ "btrfs" ];
-    kernelPackages = pkgs.linuxPackages_latest;
+    #kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
     #initrd.kernelModules = [ "amdgpu" ];       # Video drivers
     
     loader = {                                  # For legacy boot:
