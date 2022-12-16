@@ -37,6 +37,7 @@
     (import ../../modules/hardware);                      # Hardware devices
 
   boot = {                                      # Boot options
+    supportedFilesystems = [ "btrfs" ];
     kernelPackages = pkgs.linuxPackages_latest;
     #initrd.kernelModules = [ "amdgpu" ];       # Video drivers
     
