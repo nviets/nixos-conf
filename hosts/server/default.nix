@@ -37,17 +37,27 @@
     (import ../../modules/hardware);                      # Hardware devices
 
   boot = {                                      # Boot options
-    kernelPackages = pkgs.linuxPackages_latest;
+    #kernelPackages = pkgs.linuxPackages_latest;
     #kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
     #initrd.kernelModules = [ "amdgpu" ];       # Video drivers
     supportedFilesystems = [ "btrfs" ];
+    initrd.kernelModules = [ "zstd" "btrfs" ];
     
     loader = {                                  # For legacy boot:
-      systemd-boot = {
-        enable = true;
-        configurationLimit = 5;                 # Limit the amount of configurations
-      };
+      #systemd-boot = {
+      #  enable = true;
+      #  configurationLimit = 5;                 # Limit the amount of configurations
+      #};
       efi.canTouchEfiVariables = true;
+      efi.efiSysMountPoint = "/boot";
+      grub = {
+        enable = true;
+        version = 2;
+        devices = [ "nodev" ];
+        efiSupport = true;
+        useOSProber = true;
+        configurationLimit = true;
+      };
       timeout = 1;                              # Grub auto select time
     };
   };
