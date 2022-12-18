@@ -40,18 +40,20 @@
     kernelPackages = pkgs.linuxPackages_latest;
     #kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
     #initrd.kernelModules = [ "amdgpu" ];       # Video drivers
+    supportedFilesystems = [ "btrfs" ];
     
     loader = {                                  # For legacy boot:
       systemd-boot = {
         enable = true;
         configurationLimit = 5;                 # Limit the amount of configurations
       };
-      #efi.canTouchEfiVariables = true;
+      efi.canTouchEfiVariables = true;
       timeout = 1;                              # Grub auto select time
     };
   };
 
   hardware = {
+    enableAllFirmware = true;
     sane = {                                    # Used for scanning with Xsane
       enable = true;
       extraBackends = [ pkgs.sane-airscan ];
@@ -62,7 +64,6 @@
 
   fileSystems = {
     "/".options = [ "compress=zstd" "autodefrag" "noatime" ];
-    "/root".options = [ "compress=zstd" "autodefrag" "noatime" ];
     "/home".options = [ "compress=zstd" "autodefrag" "noatime" ];
     "/nix".options = [ "compress=zstd" "autodefrag" "noatime" ];
   };
