@@ -37,8 +37,8 @@
     (import ../../modules/hardware);                      # Hardware devices
 
   boot = {                                      # Boot options
-    #kernelPackages = pkgs.linuxPackages_latest;
-    kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
+    kernelPackages = pkgs.linuxPackages_latest;
+    #kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
     #initrd.kernelModules = [ "amdgpu" ];       # Video drivers
     
     loader = {                                  # For legacy boot:
@@ -46,7 +46,7 @@
         enable = true;
         configurationLimit = 5;                 # Limit the amount of configurations
       };
-      efi.canTouchEfiVariables = true;
+      #efi.canTouchEfiVariables = true;
       timeout = 1;                              # Grub auto select time
     };
   };
@@ -61,9 +61,10 @@
   networking.hostName = "mini";
 
   fileSystems = {
-    "/".options = [ "compress=zstd" ];
-    "/home".options = [ "compress=zstd" ];
-    "/nix".options = [ "compress=zstd" "noatime" ];
+    "/".options = [ "compress=zstd" "autodefrag" "noatime" ];
+    "/root".options = [ "compress=zstd" "autodefrag" "noatime" ];
+    "/home".options = [ "compress=zstd" "autodefrag" "noatime" ];
+    "/nix".options = [ "compress=zstd" "autodefrag" "noatime" ];
   };
 
   environment = {                               # Packages installed system wide
