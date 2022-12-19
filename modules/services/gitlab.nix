@@ -6,6 +6,7 @@
   services = with pkgs; {
     gitlab = {
       enable = true;
+      port = 80;
       databasePasswordFile = pkgs.writeText "dbPassword" "xo0daiF4";
       initialRootPasswordFile = pkgs.writeText "rootPassword" "notproduction";
       smtp.enable = true;
