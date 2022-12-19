@@ -44,13 +44,17 @@ let
   #    propagatedBuildInputs = with rPackages; [ jsonlite ];
   #  };
 in {
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [ 8787 ];
+  };
   services.rstudio-server = with pkgs; {
     enable = true;
     listenAddr = "192.168.0.236";
     package = rstudioServerWrapper.override {
       packages = [
         (with rPackages; [
-          arrow
+          #arrow
           #catboost
           chronicler
           clustermq

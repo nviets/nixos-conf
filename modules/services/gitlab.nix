@@ -1,4 +1,8 @@
 { config, lib, pkgs, ... }: {
+    networking.firewall = {
+      enable = true;
+      allowedTCPPorts = [ 80 8080 ];
+    };
   services = with pkgs; {
     gitlab = {
       enable = true;
@@ -19,6 +23,19 @@
           email_reply_to = "nathan@localhost";
           default_projects_features = { builds = false; };
         };
+      };
+    };
+    gitlab-runner = {
+      enable = true;
+      services = {
+        default = {
+    # File should contain at least these two variables:
+    # `CI_SERVER_URL`
+    # `REGISTRATION_TOKEN`
+    registrationConfigFile = "/var/keys/gitlab/gitlab-runner-registration";
+    executor = "shell";
+    tagList = [ "shell" ];
+  };
       };
     };
     nginx = {

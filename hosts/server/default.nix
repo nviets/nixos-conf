@@ -31,9 +31,9 @@
     #[(import ../../modules/desktop/gnome/default.nix)] ++ # Desktop Environment
     #[(import ../../modules/editors/emacs/native.nix)] ++  # Native doom emacs instead of nix-community flake
     #(import ../../modules/desktop/virtualisation) ++      # Virtual Machines & VNC
-    #[(import ../../modules/services/rstudio.nix)] ++            # RStudio Server
+    [(import ../../modules/services/rstudio.nix)] ++            # RStudio Server
     #[(import ../../modules/services/hass.nix)] ++         # Home Assistant
-    #[(import ../../modules/services/gitlab.nix)] ++       # gitlab
+    [(import ../../modules/services/gitlab.nix)] ++       # gitlab
     (import ../../modules/hardware);                      # Hardware devices
 
   boot = {                                      # Boot options
@@ -56,7 +56,7 @@
         devices = [ "nodev" ];
         efiSupport = true;
         useOSProber = true;
-        configurationLimit = true;
+        configurationLimit = 2;
       };
       timeout = 1;                              # Grub auto select time
     };
@@ -77,6 +77,8 @@
     "/home".options = [ "compress=zstd" "autodefrag" "noatime" ];
     "/nix".options = [ "compress=zstd" "autodefrag" "noatime" ];
   };
+
+  programs.dconf.enable = true;
 
   environment = {                               # Packages installed system wide
     systemPackages = with pkgs; [               # This is because some options need to be configured.
