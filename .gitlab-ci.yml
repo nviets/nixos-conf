@@ -2,6 +2,8 @@ stages:
   - build
 
 build-code-job:
+  tags:
+    - shell
   stage: build
   script:
     - echo "Build the server configuration"

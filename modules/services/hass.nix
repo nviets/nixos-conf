@@ -1,48 +1,30 @@
 { config, lib, pkgs, ... }: {
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [ 8086 8123 ];
+  };
+  services.influxdb2 = {
+    enable = true;
+  };
   services.home-assistant = with pkgs; {
     enable = true;
     extraComponents = [
-      "speedtestdotnet"
-      "met"
-      "radio_browser"
       "awair"
-      "api"
-      "mqtt"
-      "influxdb"
+      "speedtestdotnet"
     ];
     config = {
-      default_config = { };
+      default_config = {};
       influxdb = {
         api_version = 2;
         ssl = false;
-        host = "192.168.0.236";
+        verify_ssl = false;
+        host = "mini";
         port = 8086;
         token =
-          "5-fa4xxWxASJyVHMJ3deAGyUCfAvsMqktXwb9RSPLY7li5RXhAoWIDbS0MI-IlaF0xJTYUHKuexrlMe7k0uJsQ==";
-        organization = "b34935d59f40ee0e";
+          "YBNgGXuBCg5caAbSEpk8zOcs_TQzZ0720k7cB2_aTN0mLLEYm0LHhDHhkCHUoUJT-dzVhlFk8NgWTdbBX7LeSQ==";
+        organization = "77baf2d7fdfe57b3";
         bucket = "hass";
-      };
-      sensor = {
-        platform = "rest";
-        resource = "http://192.168.0.92/air-data/latest";
-        json_attributes = [
-          "timestamp"
-          "score"
-          "dew_point"
-          "temp"
-          "humid"
-          "abs_humid"
-          "co2"
-          "co2_est"
-          "co2_est_baseline"
-          "voc"
-          "voc_baseline"
-          "voc_h2_raw"
-          "pm25"
-          "pm10_est"
-        ];
-        name = "Awair";
-        value_template = "{{ value_json.timestamp }}";
+        default_measurement = "state";
       };
     };
   };

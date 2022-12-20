@@ -31,8 +31,10 @@
     packages = with pkgs; [
       # Terminal
       btop              # Resource Manager
+      ncdu              # File Manager
       pfetch            # Minimal fetch
       ranger            # File Manager
+      tmux              # terminal windows
       
       # Video/Audio
       feh               # Image Viewer
