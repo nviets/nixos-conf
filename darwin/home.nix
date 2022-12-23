@@ -52,7 +52,7 @@
 
       shellAliases = {
         update = "nix flake update /Users/nathanviets/.setup; darwin-rebuild switch --flake .#macbook";
-        wspark = "wol 00:25:90:4e:15:52";
+        wspark = "/opt/homebrew/bin/wakeonlan 00:25:90:4e:15:52";
       };
     };
     neovim = {
