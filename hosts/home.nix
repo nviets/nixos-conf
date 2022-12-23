@@ -31,7 +31,7 @@
     packages = with pkgs; [
       # Terminal
       btop              # Resource Manager
-      ncdu              # File Manager
+      gotop             # Resource Manager
       pfetch            # Minimal fetch
       ranger            # File Manager
       tmux              # terminal windows
@@ -49,10 +49,13 @@
       firefox           # Browser
       google-chrome     # Browser
       remmina           # XRDP & VNC Client
+      wol               # wake on lan
 
       # File Management
       okular            # PDF viewer
       gnome.file-roller # Archive Manager
+      ncdu              # File Manager
+      nix-tree          # nix store trees
       pcmanfm           # File Manager
       rsync             # Syncer $ rsync -r dir1/ dir2/
       unzip             # Zip files

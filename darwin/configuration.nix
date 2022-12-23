@@ -50,6 +50,7 @@
       ranger
       skhd
       tmux
+      wol
 
       # Doom Emacs
       emacs
