@@ -1,43 +1,67 @@
 { config, lib, pkgs, ... }: {
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [ 3306 6817 6818 6819 ];
+  };
   services = with pkgs; {
-      slurm = {
-      server.enable = false;
+    mysql = {
+      enable = true;
+      package = pkgs.mariadb;
+      ensureDatabases = [ "slurm_acct_db" ];
+      ensureUsers = [ { 
+        name = "slurm";
+        ensurePermissions = { "slurm_acct_db.*" = "ALL PRIVILEGES"; };
+      } ];
+      settings = {
+        mysqld = {
+          innodb_buffer_pool_size = "6G";
+          innodb_lock_wait_timeout = "500";
+          innodb_log_file_size = "64M";
+        };
+      };
+    };
+    slurm = {
+      server.enable = true;
       enableStools = true;
       client.enable = true;
-      controlMachine = "asus";
-      controlAddr = "192.168.0.159";
-      clusterName = "default";
+      controlMachine = "mini";
+      #controlAddr = "192.168.0.236";
+      clusterName = "home";
       dbdserver = {
         enable = true;
-        dbdHost = "asus";
+        dbdHost = "mini";
         storagePassFile = "/var/keys/slurm/slurmStoragePassword";
+        extraConfig = ''
+          LogFile=/var/log/slurm/slurmdbd.log
+        '';
       };
       nodeName = [
-        "asus Sockets=1 RealMemory=8000 CoresPerSocket=4 ThreadsPerCore=2 Feature=HyperThread"
-        "sparkler Sockets=2 RealMemory=29000 CoresPerSocket=15 ThreadsPerCore=1"
         "mini Sockets=1 RealMemory=12000 CoresPerSocket=2 ThreadsPerCore=1"
+        #"sparkler Sockets=2 RealMemory=29000 CoresPerSocket=15 ThreadsPerCore=1"
       ];
       partitionName = [
-        "debug Nodes=asus Default=YES MaxTime=INFINITE State=UP"
-        "batch Nodes=sparkler MaxTime=INFINITE State=UP"
-        "batch Nodes=mini MaxTime=INFINITE State=UP"
+        "mini Nodes=mini MaxTime=INFINITE State=UP"
+        #"sparkler Nodes=sparkler MaxTime=INFINITE State=UP"
+        #"batch Nodes=mini,sparkler MaxTime=INFINITE State=UP"
       ];
       extraConfig = ''
-        # Scheduling Policies
-        SchedulerType=sched/builtin
-        PreemptType=preempt/partition_prio
-        PreemptMode=GANG,SUSPEND
-        # AllocatonPolicies
-        SelectType=select/cons_res
-        SelectTypeParameters=CR_Core
-        TaskPlugin=task/cgroup
-        AccountingStorageHost=asus
-        AccountingStorageType=accounting_storage/slurmdbd
+        SlurmctldLogFile=/var/log/slurm/slurmctld.log
+        SlurmdLogFile=/var/log/slurm/slurmd.log
+        ProctrackType=proctrack/cgroup
+      '';
+      extraCgroupConfig = ''
+        CgroupAutomount=yes
+        CgroupMountpoint=/sys/fs/cgroup
+        ConstrainCores=yes
+        ConstrainDevices=yes
+        ConstrainKmemSpace=no        #avoid known Kernel issues
+        ConstrainRAMSpace=yes
+        ConstrainSwapSpace=yes
       '';
     };
     munge = {
       enable = true;
-      password = "/etc/munge/munge.key";
+      password = "/var/keys/munge/munge.key";
     };
   };
 }
