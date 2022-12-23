@@ -15,7 +15,12 @@
     shell = pkgs.zsh;                     # Default shell
   };
 
-  nixpkgs.config.allowBroken = true;
+  nixpkgs = {
+    config = {
+      allowBroken = true;
+      allowUnsupportedSystem = true;  
+    };
+  };
 
   networking = {
     computerName = "MacBook";             # Host name
@@ -50,12 +55,14 @@
       ranger
       skhd
       tmux
-      wol
+      #wakeonlan
 
       # Doom Emacs
       emacs
       fd
       ripgrep
+
+      rawtherapee
     ];
   };
 
