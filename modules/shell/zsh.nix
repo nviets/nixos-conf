@@ -29,6 +29,11 @@
         # Swag
         pfetch                                  # Show fetch logo on terminal start
       '';
+
+        shellAliases = {
+          update = "nix flake update /home/nathanviets/.setup; sudo nixos-rebuild switch /home/nathanviets/.setup#server";
+          wspark = "wol 00:25:90:4e:15:52";
+        };
     };
   };
 }

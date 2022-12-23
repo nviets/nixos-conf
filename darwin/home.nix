@@ -47,7 +47,13 @@
         source ${pkgs.spaceship-prompt}/share/zsh/site-functions/prompt_spaceship_setup
         autoload -U promptinit; promptinit
         pfetch
+        # aliases
       '';                                         # Zsh theme
+
+      shellAliases = {
+        update = "nix flake update /Users/nathanviets/.setup; darwin-rebuild switch --flake .#macbook";
+        wspark = "wol 00:25:90:4e:15:52";
+      };
     };
     neovim = {
       enable = true;
