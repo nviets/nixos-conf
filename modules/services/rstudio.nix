@@ -1,48 +1,48 @@
 { config, lib, pkgs, ... }:
 let
-  kernelshap = with pkgs;
-    rPackages.buildRPackage {
-      name = "kernelshap";
+#  kernelshap = with pkgs;
+#    rPackages.buildRPackage {
+#      name = "kernelshap";
+#      src = fetchFromGitHub {
+#        owner = "mayer79";
+#        repo = "kernelshap";
+#        rev = "962b01222cbc959eff80ecbcecea505f7fc79a74";
+#        sha256 = "sha256-Bshf3S0Q8QUjs1o0e06mweybX2IjzPc1ngue7AhD4rc=";
+#      };
+#      propagatedBuildInputs = with rPackages; [ doRNG foreach MASS ];
+#    };
+#  shapviz = with pkgs;
+#    rPackages.buildRPackage {
+#      name = "shapviz";
+#      src = fetchFromGitHub {
+#        owner = "mayer79";
+#        repo = "shapviz";
+#        rev = "a5a721b96a034dec01087db85e673155c7d382cc";
+#        sha256 = "sha256-rZVCva28HSgx6zLkZGd224PoQU1tphEGkYm5RB8tZZd=";
+#      };
+#      propagatedBuildInputs = with rPackages; [
+#        ggbeeswarm
+#        ggfittext
+#        gggenes
+#        ggplot2
+#        ggrepel
+#        rlang
+#        xgboost
+#      ];
+#    };
+    catboost = with pkgs; rPackages.buildRPackage {
+      name = "catboost";
       src = fetchFromGitHub {
-        owner = "mayer79";
-        repo = "kernelshap";
-        rev = "962b01222cbc959eff80ecbcecea505f7fc79a74";
-        sha256 = "sha256-Bshf3S0Q8QUjs1o0e06mweybX2IjzPc1ngue7AhD4rc=";
+        owner = "catboost";
+        repo = "catboost";
+        rev = "v1.1.1";
+        sha256 = "sha256-bqnUHTTRan/spA5y4LRt/sIUYpP3pxzdN/4wHjzgZVY=";
       };
-      propagatedBuildInputs = with rPackages; [ doRNG foreach MASS ];
+      preBuild = ''
+        cd catboost/R-package
+      '';
+      propagatedBuildInputs = with rPackages; [ jsonlite ];
     };
-  shapviz = with pkgs;
-    rPackages.buildRPackage {
-      name = "shapviz";
-      src = fetchFromGitHub {
-        owner = "mayer79";
-        repo = "shapviz";
-        rev = "a5a721b96a034dec01087db85e673155c7d382cc";
-        sha256 = "sha256-rZVCva28HSgx6zLkZGd224PoQU1tphEGkYm5RB8tZZd=";
-      };
-      propagatedBuildInputs = with rPackages; [
-        ggbeeswarm
-        ggfittext
-        gggenes
-        ggplot2
-        ggrepel
-        rlang
-        xgboost
-      ];
-    };
-  #  catboost = with pkgsLatest; rPackages.buildRPackage {
-  #    name = "catboost";
-  #    src = fetchFromGitHub {
-  #      owner = "catboost";
-  #      repo = "catboost";
-  #      rev = "v1.0.5";
-  #      sha256 = "ILemeZUBI9jPb9G6F7QX/T1HaVhQ+g6y7YmsT6DFCJk=";
-  #    };
-  #    preBuild = ''
-  #      cd catboost/R-package
-  #    '';
-  #    propagatedBuildInputs = with rPackages; [ jsonlite ];
-  #  };
 in {
   networking.firewall = {
     enable = true;
