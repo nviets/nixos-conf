@@ -37,12 +37,12 @@
       };
       nodeName = [
         "mini Sockets=1 RealMemory=12000 CoresPerSocket=2 ThreadsPerCore=1"
-        #"sparkler Sockets=2 RealMemory=29000 CoresPerSocket=15 ThreadsPerCore=1"
+        "sparkler Sockets=2 RealMemory=29000 CoresPerSocket=15 ThreadsPerCore=1"
       ];
       partitionName = [
         "mini Nodes=mini MaxTime=INFINITE State=UP"
-        #"sparkler Nodes=sparkler MaxTime=INFINITE State=UP"
-        #"batch Nodes=mini,sparkler MaxTime=INFINITE State=UP"
+        "sparkler Nodes=sparkler MaxTime=INFINITE State=UP"
+        "batch Nodes=mini,sparkler MaxTime=INFINITE State=UP"
       ];
       extraConfig = ''
         SlurmctldLogFile=/var/log/slurm/slurmctld.log
