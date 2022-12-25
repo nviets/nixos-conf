@@ -44,10 +44,6 @@
     initrd.kernelModules = [ "zstd" "btrfs" ];
     
     loader = {                                  # For legacy boot:
-      #systemd-boot = {
-      #  enable = true;
-      #  configurationLimit = 5;                 # Limit the amount of configurations
-      #};
       efi.canTouchEfiVariables = true;
       efi.efiSysMountPoint = "/boot";
       grub = {
@@ -60,6 +56,9 @@
       };
       timeout = 1;                              # Grub auto select time
     };
+    tmpOnTmpfs = true;
+    cleanTmpDir = true;
+    devShmSize = "50%";
   };
 
   hardware = {
