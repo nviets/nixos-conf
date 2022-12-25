@@ -39,9 +39,7 @@
     [(import ../../modules/services/gitlab.nix)] ++        # gitlab
     (import ../../modules/hardware);                       # Hardware devices
   boot = {                                      # Boot options
-    #kernelPackages = pkgs.linuxPackages_latest;
-    #kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
-    #initrd.kernelModules = [ "amdgpu" ];       # Video drivers
+    kernelPackages = pkgs.linuxPackages_latest;
     supportedFilesystems = [ "btrfs" ];
     initrd.kernelModules = [ "zstd" "btrfs" ];
     
