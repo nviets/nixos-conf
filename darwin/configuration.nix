@@ -10,6 +10,9 @@
 { config, pkgs, user, ... }:
 
 {
+  imports = 
+    [(import ./rEnv/r.nix)];     # R matched to RStudio
+
   users.users."${user}" = {               # macOS user
     home = "/Users/${user}";
     shell = pkgs.zsh;                     # Default shell
@@ -55,6 +58,7 @@
       ranger
       skhd
       tmux
+      waifu2x-converter-cpp
       #wakeonlan
 
       # Doom Emacs

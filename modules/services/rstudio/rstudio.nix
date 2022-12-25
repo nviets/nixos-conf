@@ -7,7 +7,7 @@
     enable = true;
     listenAddr = "192.168.0.236";
     package = rstudioServerWrapper.override {
-      packages = [ (import ./r-packages.nix pkgs) ];
+      packages = [ (import ../../../darwin/r-packages.nix pkgs) ];
     };
   };
 }
