@@ -23,7 +23,7 @@
       # Terminal
       pfetch
     ];
-    stateVersion = "22.05";
+    stateVersion = "23.05";
   };
 
   programs = {
