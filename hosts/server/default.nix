@@ -32,7 +32,7 @@
     #[(import ../../modules/editors/emacs/native.nix)] ++  # Native doom emacs instead of nix-community flake
     #(import ../../modules/desktop/virtualisation) ++      # Virtual Machines & VNC
     [(import ../../modules/services/rstudio/rstudio.nix)] ++ # RStudio Server
-    [(import ../../modules/services/rstudio/r.nix)] ++     # R matched to RStudio
+    [(import ../../darwin/rEnv/r.nix)] ++                  # R matched to RStudio
     [(import ../../modules/services/slurm.nix)] ++         # Slurm
     [(import ../../modules/services/tailscale.nix)] ++     # Tailscale
     [(import ../../modules/services/hass.nix)] ++          # Home Assistant
