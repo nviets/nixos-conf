@@ -1,5 +1,5 @@
 #
-#  Specific system configuration settings for server 
+#  Specific system configuration settings for server
 #
 #  flake.nix
 #   ├─ ./hosts
@@ -25,40 +25,59 @@
 {
   imports =                                               # For now, if applying to other system, swap files
     [(import ./hardware-configuration.nix)] ++            # Current system hardware config @ /etc/nixos/hardware-configuration.nix
-    #[(import ../../modules/programs/games.nix)] ++        # Gaming
-    #[(import ../../modules/desktop/bspwm/default.nix)] ++   # Window Manager
+    [(import ../../modules/programs/games.nix)] ++        # Gaming
+    [(import ../../modules/desktop/bspwm/default.nix)] ++   # Window Manager
     #[(import ../../modules/desktop/hyprland/default.nix)] ++ # Window Manager
     #[(import ../../modules/desktop/gnome/default.nix)] ++ # Desktop Environment
     #[(import ../../modules/editors/emacs/native.nix)] ++  # Native doom emacs instead of nix-community flake
     #(import ../../modules/desktop/virtualisation) ++      # Virtual Machines & VNC
-    [(import ../../modules/services/rstudio.nix)] ++       # RStudio Server
+    #[(import ../../modules/services/rstudio.nix)] ++       # RStudio Server
     [(import ../../darwin/rEnv/r.nix)] ++                  # R matched to RStudio
     [(import ../../modules/services/slurm.nix)] ++         # Slurm
-    [(import ../../modules/services/tailscale.nix)] ++     # Tailscale
-    [(import ../../modules/services/hass.nix)] ++          # Home Assistant
-    [(import ../../modules/services/gitlab.nix)] ++        # gitlab
+    #[(import ../../modules/services/tailscale.nix)] ++     # Tailscale
+    #[(import ../../modules/services/hass.nix)] ++          # Home Assistant
+    #[(import ../../modules/services/gitlab.nix)] ++        # gitlab
     (import ../../modules/hardware);                       # Hardware devices
   boot = {                                      # Boot options
     kernelPackages = pkgs.linuxPackages_latest;
-    supportedFilesystems = [ "btrfs" ];
-    initrd.kernelModules = [ "zstd" "btrfs" ];
-    
+    supportedFilesystems = [ "btrfs" "hdfs" ];
+    initrd.availableKernelModules = [ "ahci" "ohci_pci" "ehci_pci" "pata_atiixp" "usbhid" "sd_mod" ];
+    #initrd.kernelModules = [ "zstd" "btrfs" ];
+
     loader = {                                  # For legacy boot:
+      #systemd-boot = {
+      #  enable = true;
+      #  configurationLimit = 5;                 # Limit the amount of configurations
+      #};
       efi.canTouchEfiVariables = true;
       efi.efiSysMountPoint = "/boot";
       grub = {
         enable = true;
         version = 2;
-        devices = [ "nodev" ];
-        efiSupport = true;
-        useOSProber = true;
-        configurationLimit = 2;
+        devices = [ "/dev/sdb" ];
+        #efiSupport = true;
+        #useOSProber = true;
+        #configurationLimit = 2;
       };
       timeout = 1;                              # Grub auto select time
     };
     tmpOnTmpfs = true;
     cleanTmpDir = true;
-    devShmSize = "50%";
+    kernel.sysctl."net.ipv4.ip_forward" = true;
+    kernelModules = [
+      "kvm-amd"
+      "xhci_pci"
+      "coretemp"
+      #"ipmi_devintf"
+      #"ipmi_si"
+      "jc42"
+      "k10temp"
+      "tpm_rng"
+      "w83627dhg"
+      "w83627ehf"
+      ];
+    blacklistedKernelModules = [ "nouveau" ];
+    binfmt.emulatedSystems = [ "aarch64-linux" "armv7l-linux" ];
   };
 
   hardware = {
@@ -69,12 +88,13 @@
     };
   };
 
-  networking.hostName = "mini";
+  networking = {
+    hostName = "sparkler";
+    hostId = "4e98920d";
+  };
 
   fileSystems = {
-    "/".options = [ "compress=zstd" "autodefrag" "noatime" ];
-    "/home".options = [ "compress=zstd" "autodefrag" "noatime" ];
-    "/nix".options = [ "compress=zstd" "autodefrag" "noatime" ];
+    "/".options = [ "noatime" "nodiratime" "discard" ];
   };
 
   programs.dconf.enable = true;
@@ -92,7 +112,7 @@
   services = {
     btrfs.autoScrub = {
       enable = true;
-      fileSystems = [ "/" ];
+      fileSystems = [ "/lake" ];
     };
     blueman.enable = true;                      # Bluetooth
     printing = {                                # Printing and drivers for TS5300

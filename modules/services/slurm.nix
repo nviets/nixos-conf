@@ -8,7 +8,7 @@
       enable = true;
       package = pkgs.mariadb;
       ensureDatabases = [ "slurm_acct_db" ];
-      ensureUsers = [ { 
+      ensureUsers = [ {
         name = "slurm";
         ensurePermissions = { "slurm_acct_db.*" = "ALL PRIVILEGES"; };
       } ];
@@ -21,6 +21,7 @@
       };
     };
     slurm = {
+      #server.enable = true;
       server.enable = true;
       enableStools = true;
       client.enable = true;
