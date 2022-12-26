@@ -5,12 +5,10 @@
   };
   services = with pkgs; {
     slurm = {
-      #server.enable = true;
       server.enable = false;
       enableStools = true;
       client.enable = true;
       controlMachine = "mini";
-      #controlAddr = "192.168.0.236";
       clusterName = "home";
       dbdserver = {
         #enable = true;
@@ -33,7 +31,7 @@
       extraConfig = ''
         SlurmctldLogFile=/var/log/slurm/slurmctld.log
         SlurmdLogFile=/var/log/slurm/slurmd.log
-        ProctrackType=proctrack/cgroup
+        #ProctrackType=proctrack/cgroup
       '';
       extraCgroupConfig = ''
         CgroupAutomount=yes
