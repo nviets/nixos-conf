@@ -54,6 +54,7 @@
       btop
       git
       htop
+      nixfmt
       node2nix
       ranger
       skhd
