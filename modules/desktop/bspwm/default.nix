@@ -54,7 +54,8 @@
 
       videoDrivers = [                            # Video Settings
         #"amdgpu"
-        "intel"
+        #"intel"
+        "nvidia"
       ];
 
       displayManager.sessionCommands = ''
