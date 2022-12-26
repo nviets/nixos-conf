@@ -33,7 +33,7 @@
     #(import ../../modules/desktop/virtualisation) ++      # Virtual Machines & VNC
     [(import ../../modules/services/rstudio.nix)] ++       # RStudio Server
     [(import ../../darwin/rEnv/r.nix)] ++                  # R matched to RStudio
-    [(import ../../modules/services/slurm.nix)] ++         # Slurm
+    [(import ../../modules/services/slurm/slurmMaster.nix)] ++ # Slurm
     [(import ../../modules/services/tailscale.nix)] ++     # Tailscale
     [(import ../../modules/services/hass.nix)] ++          # Home Assistant
     [(import ../../modules/services/gitlab.nix)] ++        # gitlab

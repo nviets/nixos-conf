@@ -21,14 +21,13 @@
       };
     };
     slurm = {
-      #server.enable = true;
       server.enable = true;
       enableStools = true;
       client.enable = true;
       controlMachine = "mini";
-      #controlAddr = "192.168.0.236";
       clusterName = "home";
       dbdserver = {
+        #enable = true;
         enable = true;
         dbdHost = "mini";
         storagePassFile = "/var/keys/slurm/slurmStoragePassword";
