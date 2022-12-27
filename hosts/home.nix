@@ -64,13 +64,14 @@
 
       # General configuration
       #git              # Repositories
-      #killall          # Stop Applications
+      killall          # Stop Applications
       #nano             # Text Editor
+      bintools-unwrapped # utilities
       #pciutils         # Computer utility info
       #pipewire         # Sound
       #usbutils         # USB utility info
       #wacomtablet      # Wacom Tablet
-      #wget             # Downloader
+      wget             # Downloader
       #zsh              # Shell
       #
       # General home-manager
