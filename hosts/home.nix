@@ -57,6 +57,7 @@
       ncdu              # File Manager
       nix-tree          # nix store trees
       nixfmt
+      nixpkgs-fmt
       pcmanfm           # File Manager
       rsync             # Syncer $ rsync -r dir1/ dir2/
       unzip             # Zip files

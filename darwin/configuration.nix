@@ -55,6 +55,7 @@
       git
       htop
       nixfmt
+      nixpkgs-fmt
       node2nix
       ranger
       skhd
