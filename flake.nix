@@ -62,7 +62,7 @@
       user = "nathanviets";
       location = "$HOME/.setup";
     in                                                                      # Use above variables in ...
-    {
+    rec {
       nixosConfigurations = (                                               # NixOS configurations
         import ./hosts {                                                    # Imports ./hosts/default.nix
           inherit (nixpkgs) lib;
@@ -84,6 +84,5 @@
         }
       );
 
-      hydraJobs.nixosConfigurations.server = derivation;
     };
 }
