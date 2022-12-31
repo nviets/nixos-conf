@@ -83,5 +83,7 @@
           inherit inputs nixpkgs home-manager nixgl user;
         }
       );
+
+      hydraJobs.nixosConfigurations.server = derivation;
     };
 }
