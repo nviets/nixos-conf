@@ -1,9 +1,8 @@
-#+title: Matthias' NixOS & Nix-Darwin System Configuration Flake
+#+title: Nathan's NixOS & Nix-Darwin System Configuration Flake
 #+description: General information about my flake and how to set it up
-#+author: Matthias Benaets
+#+author: Nathan Viets
 
-#+attr_org: :width 600
-[[file:rsc/Header.svg]]
+Derived from Matthias Benaets' nixos configuration. 
 
 * Table of Content :toc:
 - [[#system-components][System Components]]
