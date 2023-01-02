@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }: {
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ 8080 8091 8095 ];
+    allowedTCPPorts = [ 8091 8095 ];
   };
   services.jira = {
     enable = true;
