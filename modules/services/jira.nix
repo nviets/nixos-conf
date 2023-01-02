@@ -7,11 +7,6 @@
     enable = true;
     jrePackage = pkgs.jdk11;
     listenAddress = "192.168.0.236";
-    proxy = {
-      enable = false;
-      #port = 8099;
-      #scheme = "http";
-      #secure = false;
-    };
+    proxy.enable = false;
   };
 }
