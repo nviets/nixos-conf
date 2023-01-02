@@ -38,6 +38,7 @@
     [(import ../../modules/services/hass.nix)] ++          # Home Assistant
     [(import ../../modules/services/gitlab.nix)] ++        # gitlab
     [(import ../../modules/services/hydra.nix)] ++         # hydra setup
+    [(import ../../modules/services/jira.nix)] ++          # jira setup
     (import ../../modules/hardware);                       # Hardware devices
   boot = {                                      # Boot options
     kernelPackages = pkgs.linuxPackages_latest;
