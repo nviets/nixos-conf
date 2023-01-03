@@ -30,7 +30,7 @@
     #[(import ../../modules/desktop/hyprland/default.nix)] ++ # Window Manager
     #[(import ../../modules/desktop/gnome/default.nix)] ++ # Desktop Environment
     #[(import ../../modules/editors/emacs/native.nix)] ++  # Native doom emacs instead of nix-community flake
-    #(import ../../modules/desktop/virtualisation) ++      # Virtual Machines & VNC
+    (import ../../modules/desktop/virtualisation) ++      # Virtual Machines & VNC
     #[(import ../../modules/services/rstudio.nix)] ++       # RStudio Server
     [(import ../../darwin/rEnv/r.nix)] ++                  # R matched to RStudio
     [(import ../../modules/services/slurm/slurmChild.nix)] ++ # Slurm
