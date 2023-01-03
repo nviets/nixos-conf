@@ -172,6 +172,7 @@
     };
     brews = [
       "wireguard-tools"
+      "wakeonlan"
     ];
     casks = [
       "plex-media-player"
