@@ -36,7 +36,7 @@
         '';
       };
       nodeName = [
-        "mini Sockets=1 RealMemory=12000 CoresPerSocket=4 ThreadsPerCore=1"
+        "mini Sockets=1 RealMemory=12000 CoresPerSocket=2 ThreadsPerCore=2"
         "sparkler Sockets=2 RealMemory=29000 CoresPerSocket=16 ThreadsPerCore=1"
       ];
       partitionName = [
