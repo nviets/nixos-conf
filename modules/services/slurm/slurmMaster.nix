@@ -40,14 +40,16 @@
         "sparkler Sockets=2 RealMemory=29000 CoresPerSocket=16 ThreadsPerCore=1"
       ];
       partitionName = [
-        "mini Nodes=mini MaxTime=INFINITE State=UP"
-        "sparkler Nodes=sparkler MaxTime=INFINITE State=UP"
-        "batch Nodes=mini,sparkler MaxTime=INFINITE State=UP"
+        "batch Nodes=mini,sparkler Default=YES MaxTime=INFINITE State=UP"
+        "mini Nodes=mini Default=NO MaxTime=INFINITE State=UP"
+        "sparkler Nodes=sparkler Default=NO MaxTime=INFINITE State=UP"
       ];
       extraConfig = ''
         SlurmctldLogFile=/var/log/slurm/slurmctld.log
         SlurmdLogFile=/var/log/slurm/slurmd.log
         ProctrackType=proctrack/cgroup
+        FastSchedule=1
+        SchedulerType=sched/backfill
       '';
       extraCgroupConfig = ''
         CgroupAutomount=yes
