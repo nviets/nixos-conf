@@ -36,8 +36,8 @@
         '';
       };
       nodeName = [
-        "mini Sockets=1 RealMemory=12000 CoresPerSocket=2 ThreadsPerCore=1"
-        "sparkler Sockets=2 RealMemory=29000 CoresPerSocket=15 ThreadsPerCore=1"
+        "mini Sockets=1 RealMemory=12000 CoresPerSocket=2 ThreadsPerCore=2"
+        "sparkler Sockets=2 RealMemory=29000 CoresPerSocket=16 ThreadsPerCore=1"
       ];
       partitionName = [
         "mini Nodes=mini MaxTime=INFINITE State=UP"
