@@ -45,7 +45,9 @@ This flake currently has *4* hosts
  3. vm
     - Legacy boot w/ grub
  4. server
-    - UEFI boot w/ systemd-boot
+    - UEFI boot w/ grub
+ 5. sparkler
+    - UEFI boot w/ grub
 
 Flakes can be build with:
 - ~$ sudo nixos-rebuild switch --flake <path>#<hostname>~
@@ -275,6 +277,17 @@ This will rebuild the configuration and automatically activate it.
    - ~Terminal/iTerm > Secure Keyboard Entry~
 3. Install XCode to get complete development environment.
    - ~$ xcode-select --install~
+
+** Slurm
+Here are some useful commands for troubleshooting slurm.
+
+#+begin_src
+$ sudo systemctl restart munged.service
+$ sudo systemctl restart slurmctld.service
+$ sudo scontrol update nodename=mini state=idle
+#+end_src
+
+See also, [[https://slurm.schedmd.com/troubleshoot.html][Slurm Troubleshooting]]
 
 * FAQ
 - What is NixOS?
