@@ -54,6 +54,7 @@
       # File Management
       okular            # PDF viewer
       gnome.file-roller # Archive Manager
+      jq                # json formatting
       ncdu              # File Manager
       nix-tree          # nix store trees
       nixfmt
