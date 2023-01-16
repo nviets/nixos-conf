@@ -21,6 +21,7 @@ with pkgs.rPackages; [
   shapviz
   shiny
   sparklyr
+  synthpop
   tabnet
   targets
   tidymodels
@@ -29,6 +30,7 @@ with pkgs.rPackages; [
   torch
   #torchaudio
   torchvision
+  visNetwork
   vitae
   xgboost
   XML
