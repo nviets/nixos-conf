@@ -7,13 +7,25 @@
 #
 
 { lib, inputs, nixpkgs, home-manager, nixgl, user, ... }:
-
+let
+  system = "aarch64-linux";
+  pkgs = nixpkgs.legacyPackages.${system};
+in
 {
   pacman = home-manager.lib.homeManagerConfiguration {    # Currently only host that can be built
-    system = "x86_64-linux";
-    username = "${user}";
-    homeDirectory = "/home/${user}";
-    configuration = import ./pacman.nix;
+    inherit pkgs;
     extraSpecialArgs = { inherit inputs nixgl user; };
+    modules = [
+      #./pacman.nix
+      ../hosts/home.nix
+#      {
+#        home = {
+#          username = "${user}";
+#          homeDirectory = "/home/${user}";
+#          packages = [ pkgs.home-manager ];
+#          #stateVersion = "22.05";
+#        };
+#      }
+    ];
   };
 }
