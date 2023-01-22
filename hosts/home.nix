@@ -38,21 +38,21 @@
       
       # Video/Audio
       feh               # Image Viewer
-      mpv               # Media Player
-      pavucontrol       # Audio control
-      plex-media-player # Media Player
+      #mpv               # Media Player
+      #pavucontrol       # Audio control
+      #plex-media-player # Media Player
       vlc               # Media Player
-      stremio           # Media Streamer
+      #stremio           # Media Streamer
 
       # Apps
       appimage-run      # Runs AppImages on NixOS
       firefox           # Browser
-      google-chrome     # Browser
+      #google-chrome     # Browser
       remmina           # XRDP & VNC Client
       wol               # wake on lan
 
       # File Management
-      okular            # PDF viewer
+      #okular            # PDF viewer
       gnome.file-roller # Archive Manager
       jq                # json formatting
       ncdu              # File Manager
@@ -62,7 +62,7 @@
       pcmanfm           # File Manager
       rsync             # Syncer $ rsync -r dir1/ dir2/
       unzip             # Zip files
-      unrar             # Rar files
+      #unrar             # Rar files
 
       # General configuration
       #git              # Repositories
@@ -149,6 +149,8 @@
   programs = {
     home-manager.enable = true;
   };
+
+  nixpkgs.config.allowUnfree = true;
 
   gtk = {                                     # Theming
     enable = true;
