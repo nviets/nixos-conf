@@ -1,4 +1,11 @@
 { config, lib, pkgs, ... }: {
+#  nixpkgs.overlays = [
+#    (_: super:
+#      with super; {
+#        blas = blas.override {blasProvider = mkl;};
+#        lapack = lapack.override {lapackProvider = mkl;};
+#      })
+#  ];
   networking.firewall = {
     enable = true;
     allowedTCPPorts = [ 8787 ];

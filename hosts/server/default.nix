@@ -132,5 +132,10 @@
         };}
       );
     })
+#    (_: super:
+#      with super; {
+#        blas = blas.override {blasProvider = mkl;};
+#        lapack = lapack.override {lapackProvider = mkl;};
+#    })
   ];
 }
