@@ -65,9 +65,14 @@
     systemPackages = with pkgs; [           # Default packages install system-wide
       #vim
       #git
+      freeipmi
+      hardinfo
+      ipmitool
       killall
+      lm_sensors
       nano
       pciutils
+      psensor
       usbutils
       wget
     ];
