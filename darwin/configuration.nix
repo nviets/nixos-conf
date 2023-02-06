@@ -56,6 +56,7 @@
       htop
       nixfmt
       nixpkgs-fmt
+      nixpkgs-review
       node2nix
       ranger
       skhd

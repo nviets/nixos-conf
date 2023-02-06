@@ -21,7 +21,7 @@ with pkgs.rPackages; [
   shapviz
   shiny
   sparklyr
-  synthpop
+  #synthpop
   tabnet
   targets
   tidymodels
