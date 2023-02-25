@@ -51,6 +51,7 @@
     };
     systemPackages = with pkgs; [         # Installed Nix packages
       # Terminal
+      aria2
       btop
       git
       htop
