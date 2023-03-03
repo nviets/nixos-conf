@@ -1,0 +1,40 @@
+pkgs:
+with pkgs.rPackages; [
+  chronicler
+  clustermq
+  gbm
+  ICEbox
+  influxdbclient
+  innsight
+  kernelshap
+  knitr
+  lightgbm
+  lubridate
+  luz
+  #mirai
+  #nanonext
+  plotly
+  pmml
+  quantmod
+  recipes
+  rmarkdown
+  shapviz
+  shiny
+  sparklyr
+  #synthpop
+  tabnet
+  targets
+  tidymodels
+  tidyverse
+  tinytex
+  torch
+  #torchaudio
+  torchvision
+  visNetwork
+  vitae
+  xgboost
+  XML
+  xml2
+  xts
+  yardstick
+]
