@@ -1,4 +1,8 @@
 { config, lib, pkgs, ... }: {
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [ 8080 ];
+  };
   services.telegraf = {
     enable = true;
     environmentFiles = [ "/run/keys/telegraf.env" ];
@@ -17,6 +21,10 @@
           servers = [ "http://192.168.0.92/air-data/latest" ];
           response_timeout = "10s";
           method = "GET";
+        };
+        http_listener_v2 ={
+          service_address = ":8080";
+          data_format = "json";
         };
       };
       outputs = {
