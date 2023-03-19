@@ -23,6 +23,7 @@
   home = {                                # Specific packages for desktop
     packages = with pkgs; [
       # Applications
+      celestia
       #handbrake         # Encoder
       #hugo              # Static Website Builder
       #mkvtoolnix        # Matroska Tools
