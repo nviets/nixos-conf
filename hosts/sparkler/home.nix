@@ -27,6 +27,7 @@
       #handbrake         # Encoder
       #hugo              # Static Website Builder
       #mkvtoolnix        # Matroska Tools
+      nvtop
       #plex-media-player # Media Player
 
       # Dependencies

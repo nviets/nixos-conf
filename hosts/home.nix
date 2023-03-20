@@ -68,6 +68,7 @@
 
       # General configuration
       #git              # Repositories
+      dmidecode
       killall          # Stop Applications
       #nano             # Text Editor
       bintools-unwrapped # utilities
