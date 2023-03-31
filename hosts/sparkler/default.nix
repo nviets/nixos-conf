@@ -141,7 +141,9 @@
 #      openFirewall = true;
 #    };
   };
-
+  nixpkgs.config.permittedInsecurePackages = [
+    "googleearth-pro-7.3.4.8248"
+  ];
   nixpkgs.overlays = [                          # This overlay will pull the latest version of Discord
     (self: super: {
       discord = super.discord.overrideAttrs (
