@@ -81,6 +81,7 @@
   };
 
   programs.dconf.enable = true;
+  programs.mosh.enable = true;
 
   environment = {                               # Packages installed system wide
     systemPackages = with pkgs; [               # This is because some options need to be configured.
