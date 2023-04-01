@@ -54,6 +54,7 @@
 
       # File Management
       #okular            # PDF viewer
+      git-lfs
       gnome.file-roller # Archive Manager
       jq                # json formatting
       ncdu              # File Manager

@@ -82,6 +82,7 @@
 
   programs.dconf.enable = true;
   programs.mosh.enable = true;
+  programs.zsh.enable = true;
 
   environment = {                               # Packages installed system wide
     systemPackages = with pkgs; [               # This is because some options need to be configured.
