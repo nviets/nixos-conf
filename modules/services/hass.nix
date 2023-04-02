@@ -1,4 +1,4 @@
-{ config, lib, pkgs, builtins, ... }: {
+{ config, lib, pkgs, ... }: {
   networking.firewall = {
     enable = true;
     allowedTCPPorts = [ 8086 8123 ];
@@ -24,7 +24,8 @@
         verify_ssl = false;
         host = "localhost";
         port = 8086;
-        token = builtins.readFile /run/keys/influx.token;
+        #token = lib.readFile /run/keys/influx.token;
+        token = "aDFEu43Kbh6z5FjgPrANcoR5EdHAmBz35iOXZgAzqHPQFsit5e8agR7kuZZg2L9G9mJFmiWmZFgkJd0so6_F1A==";
         organization = "dab3742f664a79c9";
         bucket = "hass";
         tags = {

@@ -24,9 +24,11 @@
     packages = with pkgs; [
       # Applications
       celestia
+      googleearth-pro
       #handbrake         # Encoder
       #hugo              # Static Website Builder
       #mkvtoolnix        # Matroska Tools
+      nvtop
       #plex-media-player # Media Player
 
       # Dependencies

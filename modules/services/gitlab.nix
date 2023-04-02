@@ -16,6 +16,7 @@
         otpFile = "/var/keys/gitlab/otp";
         jwsFile = "/var/keys/gitlab/jws";
       };
+      pages.settings.pages-domain = "mini.com";
       extraConfig = {
         ldap.enabled = true;
         gitlab = {

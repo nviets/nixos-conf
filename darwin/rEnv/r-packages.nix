@@ -1,5 +1,9 @@
 pkgs:
+let
+  xgb = pkgs.xgboost.override{rLibrary = true; cudaSupport = true; ncclSupport = true; doCheck = false; cudaPackages = pkgs.cudaPackages_11; };
+in
 with pkgs.rPackages; [
+  caret
   chronicler
   clustermq
   gbm
@@ -32,9 +36,9 @@ with pkgs.rPackages; [
   torchvision
   visNetwork
   vitae
-  xgboost
+  #xgboost
   XML
   xml2
   xts
   yardstick
-]
+] #++ [ xgb ]

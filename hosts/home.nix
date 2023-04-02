@@ -47,13 +47,16 @@
 
       # Apps
       appimage-run      # Runs AppImages on NixOS
+      aria2
       firefox           # Browser
       #google-chrome     # Browser
+      nodejs
       remmina           # XRDP & VNC Client
       wol               # wake on lan
 
       # File Management
       #okular            # PDF viewer
+      git-lfs
       gnome.file-roller # Archive Manager
       jq                # json formatting
       ncdu              # File Manager
@@ -68,6 +71,7 @@
 
       # General configuration
       #git              # Repositories
+      dmidecode
       killall          # Stop Applications
       #nano             # Text Editor
       bintools-unwrapped # utilities
