@@ -55,6 +55,7 @@
       btop
       git
       htop
+      mosh
       nixfmt
       nixpkgs-fmt
       nixpkgs-review
