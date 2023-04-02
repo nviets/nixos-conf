@@ -34,7 +34,7 @@
     #[(import ../../modules/services/rstudio.nix)] ++       # RStudio Server
     [(import ../../darwin/rEnv/r.nix)] ++                  # R matched to RStudio
     [(import ../../modules/services/slurm/slurmChild.nix)] ++ # Slurm
-    #[(import ../../modules/services/tailscale.nix)] ++     # Tailscale
+    [(import ../../modules/services/tailscale.nix)] ++     # Tailscale
     #[(import ../../modules/services/hass.nix)] ++          # Home Assistant
     #[(import ../../modules/services/gitlab.nix)] ++        # gitlab
     (import ../../modules/hardware);                       # Hardware devices
@@ -92,6 +92,9 @@
   networking = {
     hostName = "sparkler";
     hostId = "4e98920d";
+    firewall = {
+      allowedTCPPorts = [ 7860 ];
+    };
   };
 
   fileSystems = {
