@@ -64,6 +64,7 @@
       skhd
       tmux
       waifu2x-converter-cpp
+      wget
       #wakeonlan
 
       # Doom Emacs
