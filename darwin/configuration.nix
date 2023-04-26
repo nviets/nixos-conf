@@ -180,6 +180,10 @@
     ];
     casks = [
       "plex-media-player"
+      {
+        name = "gcenx/wine/unofficial-wineskin";
+        args = { no_quarantine = true; };
+      }
     ];
   };
 

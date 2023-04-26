@@ -15,8 +15,8 @@ with pkgs.rPackages; [
   lightgbm
   lubridate
   luz
-  #mirai
-  #nanonext
+  mirai
+  nanonext
   plotly
   pmml
   quantmod
@@ -37,7 +37,7 @@ with pkgs.rPackages; [
   torchvision
   visNetwork
   vitae
-  #xgboost
+  xgboost
   XML
   xml2
   xts
