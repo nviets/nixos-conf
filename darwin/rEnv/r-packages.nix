@@ -29,7 +29,7 @@ with pkgs.rPackages; [
   tabnet
   targets
   tidymodels
-  #tidyverse
+  tidyverse
   dplyr
   tinytex
   torch
