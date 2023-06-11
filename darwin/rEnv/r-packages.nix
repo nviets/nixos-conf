@@ -9,12 +9,12 @@ with pkgs.rPackages; [
   gbm
   ICEbox
   influxdbclient
-  innsight
+  #innsight
   kernelshap
   knitr
   lightgbm
   lubridate
-  luz
+  #luz
   mirai
   nanonext
   plotly
@@ -26,18 +26,18 @@ with pkgs.rPackages; [
   shiny
   sparklyr
   #synthpop
-  tabnet
+  #tabnet
   targets
   tidymodels
   tidyverse
   dplyr
   tinytex
-  torch
+  #torch
   #torchaudio
-  torchvision
-  visNetwork
-  vitae
-  xgboost
+  #torchvision
+  #visNetwork
+  #vitae
+  #xgboost
   XML
   xml2
   xts
