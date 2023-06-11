@@ -30,6 +30,7 @@
 
     packages = with pkgs; [
       # Terminal
+      htop
       btop              # Resource Manager
       gotop             # Resource Manager
       pfetch            # Minimal fetch
@@ -149,7 +150,7 @@
       package = pkgs.dracula-theme;
       size = 16;
     };
-    stateVersion = "22.05";
+    stateVersion = "23.05";
   };
 
   programs = {
