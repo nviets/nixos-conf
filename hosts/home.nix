@@ -49,7 +49,7 @@
       # Apps
       appimage-run      # Runs AppImages on NixOS
       aria2
-      firefox           # Browser
+      #firefox           # Browser
       #google-chrome     # Browser
       nodejs
       remmina           # XRDP & VNC Client
