@@ -152,27 +152,26 @@
         x509-validation = pkgs.haskell.lib.dontCheck super.x509-validation;
       };
     };
-    ocamlPackages = pkgs.ocamlPackages.override {
-      overrides = self: super: {
-        x509 = pkgs.ocamlPackages.x509.overrideAttrs (oldAttrs: {
-          doCheck = false;
-        });
-      };
-    };
     pythonPackages = pkgs.pythonPackages.override {
       overrides = self: super: {
-        scipy = super.scipy.overridePythonAttrs(old: rec {
+        scipy = super.scipy.overridePythonAttrs(old: {
+          preConfigure = ''
+            substituteInPlace meson.build --replace "openblas" "mkl"
+          '';
           doCheck = false;
         });
       };
     };
   };
+  nixpkgs.config.allowUnsupportedSystem = true;
   nixpkgs.overlays = [                          # This overlay will pull the latest version of Discord
     (self: super: {
       # fails on broadwell
       bind = super.bind.overrideAttrs ( _: { doCheck = false; } );
       # openexr tests: testOptimizedInterleavePatterns # failes on broadwell
       openexr_3 = super.openexr_3.overrideAttrs ( _: { doCheck = false; } );
+      #lapack = super.lapack.override { lapackProvider = super.mkl; };
+      #blas = super.blas.override { blasProvider = super.mkl; };
       discord = super.discord.overrideAttrs (
         _: { src = builtins.fetchTarball {
           url = "https://discord.com/api/download?platform=linux&format=tar.gz"; 
